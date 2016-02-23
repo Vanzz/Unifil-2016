@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ FibonacciTest()
+comment0.text=\n\ Default\ constructor\ for\ test\ class\ PrincipalTest\n
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\n\ Sets\ up\ the\ test\ fixture.\n\n\ Called\ before\ every\ test\ case\ method.\n
+comment2.params=
+comment2.target=void\ fibTest()
+comment3.params=
+comment3.target=void\ palinTest()
+comment4.params=
+comment4.target=void\ tearDown()
+comment4.text=\n\ Tears\ down\ the\ test\ fixture.\n\n\ Called\ after\ every\ test\ case\ method.\n
+numComments=5
