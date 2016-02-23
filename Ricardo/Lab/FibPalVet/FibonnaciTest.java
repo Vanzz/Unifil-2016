@@ -46,16 +46,16 @@ public class FibonnaciTest
     {
         Principal p = new Principal();
         
-        p.isPalindromo("OTO COME DOCE SECO DE MOCOTO");
-        p.isPalindromo("IRENE RI");
-        p.isPalindromo("RITA, ATIR ,");
-        p.isPalindromo("OMISSISSIMO!");
-        p.isPalindromo("AMORE, ROMA");
-        p.isPalindromo("Are we not pure? 'No, sir!' Panama's moody Noriega brags. 'It is garbage!' Irony dooms a man - a prisoner up to new era.");
-        p.isPalindromo("Taco cat");
-        p.isPalindromo("Was it a car or a cat I saw");
-        p.isPalindromo("Murder for a jar of red rum.");
-        p.isPalindromo("DA1001!?.,- AD");
+        assertEquals(true, p.isPalindromo("OTO COME DOCE SECO DE MOCOTO"));
+        assertEquals(true, p.isPalindromo("IRENE RI"));
+        assertEquals(true, p.isPalindromo("RITA, ATIR ,"));
+        assertEquals(true, p.isPalindromo("OMISSISSIMO!"));
+        assertEquals(true, p.isPalindromo("AMORE, ROMA"));
+        assertEquals(true, p.isPalindromo("Are we not pure? 'No, sir!' Panama's moody Noriega brags. 'It is garbage!' Irony dooms a man - a prisoner up to new era."));
+        assertEquals(true, p.isPalindromo("Taco cat"));
+        assertEquals(true, p.isPalindromo("Was it a car or a cat I saw"));
+        assertEquals(true, p.isPalindromo("Murder for a jar of red rum."));
+        assertEquals(true, p.isPalindromo("DA1001!?.,- AD"));
     }
       
     /**

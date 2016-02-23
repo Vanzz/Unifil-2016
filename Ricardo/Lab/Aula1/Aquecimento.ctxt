@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=valores
+comment0.target=int\ somatoria(int[])
+comment0.text=\n\ Calcula\ a\ somat\u00F3ria\ de\ um\ vetor\ dado.\n\ \n\ @param\ valores\ vetor\ dado.\n\ @return\ a\ soma\ dos\ n\u00FAmeros\ do\ vetor.\n
+comment1.params=valor
+comment1.target=int\ fibonacci(int)
+comment1.text=\n\ Calcula\ a\ en\u00E9sima\ gera\u00E7\u00E3o\ de\ fibonacci;\n\ \n\ @param\ valor\ a\ gera\u00E7\u00E3o\ de\ fibonacci\n\ @return\ quantidade\ de\ membros\ na\ determinada\ gera\u00E7\u00E3o\n
+numComments=2

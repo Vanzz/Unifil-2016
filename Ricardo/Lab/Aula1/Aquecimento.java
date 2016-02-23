@@ -1,33 +1,45 @@
-
 /**
- * Escreva a descrição da classe Aquecimento aqui.
+ * Primeira aula de Lab. II
+ * Coleção de soluções para o Exercício 0.
  * 
- * @author (seu nome) 
- * @version (número de versão ou data)
+ * @author Tiago Vansan Ketzer de Souza
+ * @version 23/02/2016
  */
 public class Aquecimento
 {
-    // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    private int x;
-
     /**
-     * COnstrutor para objetos da classe Aquecimento
-     */
-    public Aquecimento()
-    {
-        // inicializa variáveis de instância
-        x = 0;
-    }
-
-    /**
-     * Exemplo de método - substitua este comentário pelo seu próprio
+     * Calcula a somatória de um vetor dado.
      * 
-     * @param  y   exemplo de um parâmetro de método
-     * @return     a soma de x com y 
+     * @param valores vetor dado.
+     * @return a soma dos números do vetor.
      */
-    public int sampleMethod(int y)
+    public static int somatoria (int [] valores)
     {
-        // ponha seu código aqui
-        return x + y;
+        int soma = 0;
+        
+        for(int i = 0; i <= valores.length - 1; i++)
+        {
+            soma += valores[i];
+        }
+        
+        System.out.println(soma);
+        
+        return soma;
+    }
+    
+    /**
+     * Calcula a enésima geração de fibonacci;
+     * 
+     * @param valor a geração de fibonacci
+     * @return quantidade de membros na determinada geração
+     */
+    public static int fibonacci (int valor)
+    {
+        if (valor == 0)
+            return 0;
+        if (valor == 1)
+            return 1;
+            
+        return fibonacci(valor - 1) + fibonacci(valor - 2);
     }
 }
