@@ -14,33 +14,30 @@ public class Carro extends Actor
      */
     public void act() 
     {
-        float time = 0;
         move(0);
 
-            if(Greenfoot.isKeyDown("up"))
+        if(Greenfoot.isKeyDown("up"))
+        {
+            move(1);
+            if(Greenfoot.isKeyDown("right"))
             {
-                move(1);
-                if(Greenfoot.isKeyDown("right"))
-                {
-                    turn(1);
-                }else if(Greenfoot.isKeyDown("left"))
-                {
-                    turn(-1);
-                }
-    
-            }else if(Greenfoot.isKeyDown("down"))
+                turn(1);
+            }else if(Greenfoot.isKeyDown("left"))
             {
-                move(-1);
-                if(Greenfoot.isKeyDown("right"))
-                {
-                    turn(-1);
-                }else if(Greenfoot.isKeyDown("left"))
-                {
-                    turn(1);
-                }
-                
+                turn(-1);
             }
-            time -= 0.15;
-        } 
-    }   
-}
+
+        }else if(Greenfoot.isKeyDown("down"))
+        {
+            move(-1);
+            if(Greenfoot.isKeyDown("right"))
+            {
+                turn(-1);
+            }else if(Greenfoot.isKeyDown("left"))
+            {
+                turn(1);
+            }
+
+        }
+    } 
+}   
