@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=g2d\ dim
+comment0.target=void\ desenharRelativo(java.awt.Graphics2D,\ java.awt.Dimension)
+comment1.params=dim
+comment1.target=int\ getWRelativo(java.awt.Dimension)
+comment2.params=dim
+comment2.target=int\ getHRelativo(java.awt.Dimension)
+numComments=3

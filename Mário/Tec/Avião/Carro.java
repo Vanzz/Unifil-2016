@@ -34,19 +34,19 @@ public class Carro extends Actor
                 if(Greenfoot.isKeyDown("right"))
                 {
                     turn(1);
+                    if(isCollider()) turn(-1);
                 }else if(Greenfoot.isKeyDown("left"))
                 {
                     turn(-1);
+                    if(isCollider()) turn(1);
                 }
 
                 if(isCollider())
                 {
-                    System.out.println("Sou collider");
-                    up = false;
-                    down = true;
-                } else {
-                    down = true;
-                }
+                    move(-1);
+                    //up = false;                    
+                } 
+                //down = true;
                 
             }else if(Greenfoot.isKeyDown("down") && down)
             {
@@ -55,25 +55,31 @@ public class Carro extends Actor
                 if(Greenfoot.isKeyDown("right"))
                 {
                     turn(-1);
+                    if(isCollider()) turn(1);
                 }else if(Greenfoot.isKeyDown("left"))
                 {
                     turn(1);
+                    if(isCollider()) turn(-1);
                 }
 
                 if(isCollider())
                 {
-                    System.out.println("Sou collider");
-                    up = true;
-                    down = false;
-                } else {
-                    up = true;
-                }
-                
+                    move(1);
+                    //down = false;
+                } 
+                //up = true;
             }
             
             System.out.println(up+" : "+down+" -> "+isCollider());
         } else {
             move(0);
+        }
+        
+        
+        if(Greenfoot.isKeyDown("p"))
+        {
+            setRotation(0);
+            setLocation(319, 209);
         }
         
     } 
@@ -82,32 +88,10 @@ public class Carro extends Actor
     {
         return isTouching(CarroEstacionado.class);
     }
+    
+    
+    
+    
+    
+    
 }   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

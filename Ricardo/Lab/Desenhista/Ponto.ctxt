@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=x\ y
+comment0.target=Ponto(float,\ float)
+comment1.params=dim
+comment1.target=int\ getXRelativo(java.awt.Dimension)
+comment2.params=dim
+comment2.target=int\ getYRelativo(java.awt.Dimension)
+numComments=3
