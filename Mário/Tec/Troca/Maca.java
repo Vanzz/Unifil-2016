@@ -16,7 +16,4 @@ public class Maca extends Actor
     {
         // Add your action code here.
     }
-    public String toString() {
-        return "[MACA]: X: "+ getX() +", Y: "+getY() ;
-    }
 }

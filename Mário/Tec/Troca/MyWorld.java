@@ -9,12 +9,17 @@ import java.util.*;
 public class MyWorld extends World
 {
     Maca maca = new Maca();
+    Maca2 maca1 = new Maca2();
     Banana banana = new Banana();
-    int bXAnt, bYAnt, mXAnt, mYAnt;
-
+    Cereja cereja = new Cereja();
+    Uva uva = new Uva();
+    
+    int bXAnt, bYAnt, aXAnt, aYAnt;
+    Actor a, b;
     List<Actor> todos = getObjects(null);
-    boolean cMaca = false;
-    boolean cBanana = false;
+
+    boolean secondActor = false;
+    boolean firstActor = false;
     boolean changed = false;
 
     /**
@@ -28,53 +33,71 @@ public class MyWorld extends World
 
         addObject(maca, 150, 200);
         addObject(banana, 450, 200);
+        addObject(maca1, 300, 200);
+        addObject(cereja, 300, 100);
+        addObject(uva, 300, 300);
     }
 
     public void act()
-    {
-        bXAnt = banana.getX();
-        bYAnt = banana.getY();
-        mXAnt = maca.getX();
-        mYAnt = maca.getY();
-        
+    {   
         todos = getObjects(null);
-        mostraObjects();
-        if(cMaca && cBanana && !changed)
-        {
-            maca.setLocation(bXAnt, bYAnt);
-            banana.setLocation(mXAnt, mYAnt);
-            changed = true;
-        }
 
         if(changed)
         {
             changed = false;
-            cMaca = false;
-            cBanana = false;
+            firstActor = false;
+            secondActor = false;
+            a = null;
+            b = null;
         }
 
-        if(Greenfoot.mouseClicked(maca))
+        if(Greenfoot.mouseClicked(null))
         {
-            cMaca = true;
-            changed = false;
-        }
-
-        if(Greenfoot.mouseClicked(banana))
-        {
-            cBanana = true;
-            changed = false;
+            if(mostraObjects(Greenfoot.getMouseInfo()) != null){
+                if(!firstActor)
+                {
+                    a = mostraObjects(Greenfoot.getMouseInfo());
+                    firstActor = true;
+                } else if (firstActor && !secondActor) 
+                {
+                    b = mostraObjects(Greenfoot.getMouseInfo());
+                    if(!a.equals(b)){
+                        secondActor = true;
+                        setLocationAnterior(a,b);
+                        trocar(a,b);
+                    }
+                }
+            }
         }
     }
-    
-    public void mostraObjects()
+
+    public Actor mostraObjects(MouseInfo m)
     {
-        for(int i = 0; i< todos.size(); i++)
+        for(int i = 0; i < todos.size(); i++)
         {       
             if(todos.get(i) != null)
-            {
-                System.out.println(todos.get(i));
+            {                
+                if(todos.get(i).equals(m.getActor()))
+                {
+                    return todos.get(i);
+                }
             }        
         }
+        return null;
     }
-    
+
+    public void setLocationAnterior(Actor a, Actor b)
+    {
+        bXAnt = b.getX();
+        bYAnt = b.getY();
+        aXAnt = a.getX();
+        aYAnt = a.getY();
+    }
+
+    public void trocar(Actor a, Actor b)
+    {
+        a.setLocation(bXAnt, bYAnt);
+        b.setLocation(aXAnt, aYAnt);
+        changed = true;
+    }
 }
