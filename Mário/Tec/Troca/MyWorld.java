@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
+import javax.swing.JOptionPane;
+
 /**
  * Write a description of class MyWorld here.
  * 
@@ -8,12 +10,6 @@ import java.util.*;
  */
 public class MyWorld extends World
 {
-    Maca maca = new Maca();
-    Maca2 maca1 = new Maca2();
-    Banana banana = new Banana();
-    Cereja cereja = new Cereja();
-    Uva uva = new Uva();
-    
     int bXAnt, bYAnt, aXAnt, aYAnt;
     Actor a, b;
     List<Actor> todos = getObjects(null);
@@ -30,12 +26,48 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+    }
 
-        addObject(maca, 150, 200);
-        addObject(banana, 450, 200);
-        addObject(maca1, 300, 200);
-        addObject(cereja, 300, 100);
-        addObject(uva, 300, 300);
+    public void started()
+    {
+        int n = Integer.parseInt(JOptionPane.showInputDialog("Número de frutas: "));
+        if(n > 1){
+            for(int i = 0; i < n; i++)
+            {
+                addObject(escolha(), range(20, 580),range(20, 380));
+            }
+        }else{
+            started();
+        }
+    }
+
+    public Actor escolha() {
+        int n = range(1, 5);
+
+        Maca maca = new Maca();
+        Maca2 maca2 = new Maca2();
+        Banana banana = new Banana();
+        Cereja cereja = new Cereja();
+        Uva uva = new Uva();
+
+        if(n == 1)
+            return maca;
+        if(n == 2)
+            return maca2;
+        if(n == 3)
+            return banana;
+        if(n == 4)
+            return cereja;
+        if(n == 5)
+            return uva;
+
+        return null;
+    }
+
+    public int range(int min, int max)
+    {
+        int range = Math.abs(max - min) + 1;     
+        return (int)(Math.random() * range) + (min <= max ? min : max);
     }
 
     public void act()
