@@ -21,7 +21,7 @@ int somatoria (int tamanhoVetor, int * v) {
     return somaVetor;
 }
 
-int palindromo (char * palavra) {
+int palindromo (char* palavra) {
     char a[100];
     int j = 0;
     for (int i = 0; i < strlen(palavra); i++) {
@@ -30,10 +30,11 @@ int palindromo (char * palavra) {
         else{
             a[j] = palavra[i];
             j++;
+            
+            printf("%s\n", a);
         }
     }
-    
-    printf("%s", a);
+
     
     for (int i = 0; i < strlen(a); i++)
     {
@@ -43,6 +44,15 @@ int palindromo (char * palavra) {
        }
     }
     return 0;
+}
+
+void verificaPalin(char* palavra) {
+    printf("\n%s\n", palavra);
+    if(palindromo(palavra) == 1){
+        printf("\n%d NOPE\n", palindromo(palavra));
+    }else{
+        printf("\nPalíndromo\n");
+    }
 }
 
 int main (int argc, char * argv[]) {
@@ -77,25 +87,26 @@ int main (int argc, char * argv[]) {
 //    printf("A soma do vetor é: %d\n",somatoria(n, vetor));
 //
     
-    //Exercício 3 - parâmetro passado ao executar ex: ./ex01 "String"
+//    Exercício 3 - parâmetro passado ao executar ex: ./ex01 "String"
     
-    if(palindromo(argv[1]) == 1){
-        printf("\nNOPE\n");
-    }else{
-        printf("\nPalíndromo\n");
-    }
+//    if(palindromo(argv[1]) == 1){
+//        printf("\nNOPE\n");
+//    }else{
+//        printf("\nPalíndromo\n");
+//    }
+//    verificaPalin(argv[1]);
     
-    //Exercício 4 - Array de strings
+//    Exercício 4 - Array de strings
     
-    //Exercício 5 - números palíndromos até 10000
+//    Exercício 5 - números palíndromos até 10000
     
-    for(int i = 0; i < 10001; i++)
-    {
-        char str[5];
-        sprintf(str, "%d", i);
-        puts(str);
-        if(palindromo(str) != 1)
-            printf("%d é palíndromo.", i);
-    }
+//    for(int i = 0; i < 10001; i++)
+//    {
+//        char str[5];
+//        sprintf(str, "%d", i);
+//        puts(str);
+//        if(palindromo(str) != 1)
+//            printf("%d é palíndromo.", i);
+//    }
    
 }
