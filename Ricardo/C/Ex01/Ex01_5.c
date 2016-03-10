@@ -15,10 +15,9 @@ int palindromo (char* palavra) {
         }
     }
     
-    
-    for (int i = 0; i < strlen(a); i++)
+    for (int i = 0; i < sizeof(a); i++)
     {
-        if( a[i] != a[strlen(a) - i-1])// (-1)pq o ultimo caracter e espaco
+        if( a[i] != a[sizeof(a) - i -1])// (-1)pq o ultimo caracter e espaco
         {
             return 1;
         }
@@ -27,18 +26,21 @@ int palindromo (char* palavra) {
 }
 
 int verificaPalin(char* palavra) {
+    
     if(palindromo(palavra) == 1){
-        printf("%d NOPE\n", palindromo(palavra));
         return 1;
     }else{
-        printf("Palíndromo\n");
+        printf("\n%s Palíndromo\n",palavra);
         return 0;
     }
 }
 
 int main(int argc, char* argv[]) {
-//    Exercício 3 - parâmetro passado ao executar ex: ./ex01 "String"
-    
-    char * str = argv[1];
-    verificaPalin(str);
+    char str[10];
+    int i;
+    for(i = 0; i<10001;i++) {
+        
+        sprintf(str,"%d",i);
+        verificaPalin(str);
+    }
 }
