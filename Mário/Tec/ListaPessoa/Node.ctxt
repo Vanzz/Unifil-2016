@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=Node
+comment0.text=\n\ Write\ a\ description\ of\ class\ Node\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Node()
+comment10.params=_node
+comment10.target=void\ setProximo(Node)
+comment11.params=
+comment11.target=Node\ getProximo()
+comment2.params=p
+comment2.target=Node(Pessoa)
+comment3.params=p\ n
+comment3.target=Node(Pessoa,\ Label)
+comment4.params=p\ n\ i
+comment4.target=Node(Pessoa,\ Label,\ Label)
+comment4.text=\n\ Constructor\ for\ objects\ of\ class\ Node\n
+comment5.params=
+comment5.target=Pessoa\ getPessoa()
+comment6.params=
+comment6.target=Label\ getNome()
+comment7.params=
+comment7.target=Label\ getIdade()
+comment8.params=
+comment8.target=java.lang.String\ toString()
+comment9.params=
+comment9.target=Node\ getNode()
+numComments=12

@@ -8,6 +8,22 @@
 public class Principal
 {
     /**
+     * Calcula a enésima geração de fibonacci;
+     * 
+     * @param valor a geração de fibonacci
+     * @return quantidade de membros na determinada geração
+     */
+    public static int fibonacci (int valor)
+    {
+        if (valor == 0)
+            return 0;
+        if (valor == 1)
+            return 1;
+
+        return fibonacci(valor - 1) + fibonacci(valor - 2);
+    }
+    
+    /**
      * Calcula a somatória de um vetor dado.
      * 
      * @param valores vetor dado.
@@ -25,22 +41,6 @@ public class Principal
         System.out.println("A soma dos elementos do vetor é: "+ somaVetor);
 
         return somaVetor;
-    }
-
-    /**
-     * Calcula a enésima geração de fibonacci;
-     * 
-     * @param valor a geração de fibonacci
-     * @return quantidade de membros na determinada geração
-     */
-    public static int fibonacci (int valor)
-    {
-        if (valor == 0)
-            return 0;
-        if (valor == 1)
-            return 1;
-
-        return fibonacci(valor - 1) + fibonacci(valor - 2);
     }
 
     /**
@@ -94,7 +94,7 @@ public class Principal
     }
     
     /**
-     * Método que imprime se a palvrar for um palíndromo
+     * Método que imprime se a palavra for um palíndromo
      * faz sua verificação através do metódo {@link #verificaPalindromo(String) verificaPalindromo}
      * 
      * @param palavra1 palavra a ser impressa

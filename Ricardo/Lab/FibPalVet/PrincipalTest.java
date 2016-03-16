@@ -38,7 +38,7 @@ public class PrincipalTest
         int teste1[] = {0,1000};
         int teste2[] = {1, 2, 3};
         int teste3[] = {0,-1,2,-3, 4, -5};
-        
+        System.out.println("SomatóriaTeste");
         assertEquals("umZero ERRO", 0, Principal.somatoria(umZero));
         assertEquals("doisZero ERRO", 0, Principal.somatoria(doisZeros));
         assertEquals("variosZero ERRO", 0, Principal.somatoria(variosZeros));
@@ -65,6 +65,7 @@ public class PrincipalTest
     {
         Principal p = new Principal();
         
+        System.out.println("PalinTeste");
         assertEquals(true, p.isPalindromo("OTO COME DOCE SECO DE MOCOTO"));
         assertEquals(true, p.isPalindromo("IRENE RI"));
         assertEquals(true, p.isPalindromo("RITA, ATIR ,"));
@@ -80,6 +81,7 @@ public class PrincipalTest
     @Test
     public void vetorPalinTest()
     {
+        System.out.println("ArrayPalinTeste");
         String v1[] = {"OTO COME DOCE SECO DE MOCOTO", "IRENE RI" , 
             "Taco cat", "Are we not pure? 'No, sir!' Panama's moody Noriega brags. 'It is garbage!' Irony dooms a man - a prisoner up to new era.", 
             "OLAR", "COMO VAI VOSE"};

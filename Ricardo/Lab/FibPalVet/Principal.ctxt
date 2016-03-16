@@ -1,10 +1,10 @@
 #BlueJ class context
-comment0.params=v
-comment0.target=int\ somatoria(int[])
-comment0.text=\n\ Calcula\ a\ somat\u00F3ria\ de\ um\ vetor\ dado.\n\ \n\ @param\ valores\ vetor\ dado.\n\ @return\ a\ soma\ dos\ n\u00FAmeros\ do\ vetor.\n
-comment1.params=valor
-comment1.target=int\ fibonacci(int)
-comment1.text=\n\ Calcula\ a\ en\u00E9sima\ gera\u00E7\u00E3o\ de\ fibonacci;\n\ \n\ @param\ valor\ a\ gera\u00E7\u00E3o\ de\ fibonacci\n\ @return\ quantidade\ de\ membros\ na\ determinada\ gera\u00E7\u00E3o\n
+comment0.params=valor
+comment0.target=int\ fibonacci(int)
+comment0.text=\n\ Calcula\ a\ en\u00E9sima\ gera\u00E7\u00E3o\ de\ fibonacci;\n\ \n\ @param\ valor\ a\ gera\u00E7\u00E3o\ de\ fibonacci\n\ @return\ quantidade\ de\ membros\ na\ determinada\ gera\u00E7\u00E3o\n
+comment1.params=v
+comment1.target=int\ somatoria(int[])
+comment1.text=\n\ Calcula\ a\ somat\u00F3ria\ de\ um\ vetor\ dado.\n\ \n\ @param\ valores\ vetor\ dado.\n\ @return\ a\ soma\ dos\ n\u00FAmeros\ do\ vetor.\n
 comment2.params=palavra1
 comment2.target=boolean\ isPalindromo(java.lang.String)
 comment2.text=\n\ Verifica\ se\ a\ palavra\ dada\ \u00E9\ um\ pal\u00EDndromo\n\ \n\ @param\ palavra1\ palavra\ a\ verificar\n\ @return\ se\ \u00E9\ ou\ n\u00E3o\ pal\u00EDndromo\n
@@ -13,7 +13,7 @@ comment3.target=boolean\ verificaPalindromo(java.lang.String)
 comment3.text=\n\ Verifica\ se\ a\ palavra\ \u00E9\ um\ pal\u00EDndromo\n\ \n\ @param\ palavra1\ palavra\ a\ ser\ verificada\n\ @return\ se\ \u00E9\ ou\ n\u00E3o\ pal\u00EDndromo\n
 comment4.params=palavra1
 comment4.target=boolean\ printaPalindromo(java.lang.String)
-comment4.text=\n\ M\u00E9todo\ que\ imprime\ se\ a\ palvrar\ for\ um\ pal\u00EDndromo\n\ faz\ sua\ verifica\u00E7\u00E3o\ atrav\u00E9s\ do\ met\u00F3do\ {@link\ \#verificaPalindromo(String)\ verificaPalindromo}\n\ \n\ @param\ palavra1\ palavra\ a\ ser\ impressa\n\ @return\ retorna\ se\ \u00E9\ um\ pal\u00EDndromo\n
+comment4.text=\n\ M\u00E9todo\ que\ imprime\ se\ a\ palavra\ for\ um\ pal\u00EDndromo\n\ faz\ sua\ verifica\u00E7\u00E3o\ atrav\u00E9s\ do\ met\u00F3do\ {@link\ \#verificaPalindromo(String)\ verificaPalindromo}\n\ \n\ @param\ palavra1\ palavra\ a\ ser\ impressa\n\ @return\ retorna\ se\ \u00E9\ um\ pal\u00EDndromo\n
 comment5.params=vetorString
 comment5.target=boolean[]\ isPalindromoVetor(java.lang.String[])
 comment5.text=\n\ Verifica\ um\ vetor\ as\ palavras\ que\ s\u00E3o\ pal\u00EDndromos\n\ passando\ para\ outro\ m\u00E9todo\ {@link\ \#printaPalindromo(String)\ printaPalindromo}\n\ para\ fazer\ a\ sua\ verifica\u00E7\u00E3o.\n\ \n\ @param\ vetorString\ um\ array\ de\ strings\n\ @return\ um\ vetor\ de\ boolean\ com\ os\ resultados\ dos\ teste\n
