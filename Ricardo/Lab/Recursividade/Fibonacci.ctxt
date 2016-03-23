@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=g
+comment0.target=int\ fib(int)
+comment1.params=g
+comment1.target=int\ rec_fib(int)
+comment2.params=arr\ val
+comment2.target=int\ buscaPos(int[],\ int)
+comment2.text=\n\ Busca\ um\ elemento\ em\ um\ arranjo\n\ @param\ arr\ Arranjo\ a\ ser\ buscado.\n\ @param\ val\ valor\ buscado\ no\ arranjo.\n\ @return\ \u00CDndice\ de\ val\ em\ arr,\ ou\ -1\ caso\ n\u00E3o\ encontre\n
+comment3.params=arr\ val
+comment3.target=int\ buscaPos_rec(int[],\ int)
+comment3.text=\n\ Busca,\ recursivamente,\ um\ elemento\ em\ um\ arranjo\n\ @param\ arr\ Arranjo\ a\ ser\ buscado.\n\ @param\ val\ valor\ buscado\ no\ arranjo.\n\ @return\ \u00CDndice\ de\ val\ em\ arr,\ ou\ -1\ caso\ n\u00E3o\ encontre\n
+comment4.params=arr\ val\ i
+comment4.target=int\ buscaPos_recHelper(int[],\ int,\ int)
+comment5.params=arr
+comment5.target=int\ buscaMax_rec(int[])
+comment5.text=\n\ Encontra\ o\ maior\ elemento\ no\ arranjo.\n\ @param\ arr\ Arranjo\ onde\ se\ dar\u00E1\ a\ busca.\n\ @return\ Maior\ elemento\ encontrado.\n
+comment6.params=arr
+comment6.target=int\ buscaMin_rec(int[])
+comment6.text=\n\ Encontra\ o\ menor\ elemento\ no\ arranjo.\n\ @param\ arr\ Arranjo\ onde\ se\ dar\u00E1\ a\ busca.\n\ @return\ Menor\ elemento\ encontrado.\n
+numComments=7
