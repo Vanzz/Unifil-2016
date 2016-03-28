@@ -1,0 +1,4 @@
+soma 10
+soma 5
+guardamem
+sub 5

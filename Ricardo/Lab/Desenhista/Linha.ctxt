@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.params=p0\ p1
-comment0.target=Linha(Ponto,\ Ponto)
-comment1.params=g2d\ dim
-comment1.target=void\ desenharRelativo(java.awt.Graphics2D,\ java.awt.Dimension)
-numComments=2

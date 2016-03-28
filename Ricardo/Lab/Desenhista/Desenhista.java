@@ -6,9 +6,9 @@ import javax.swing.*;
 public class Desenhista extends JFrame {
     
     // Elementos (widgets) da nossa interface
-    private Tela tela;
-    private JButton btnDesenhar;
-    private JComboBox<String> boxListaDesenhos;
+    private TelaDoArranjo tela;
+    private JButton btnDesenharArranjo;
+    private JTextField txtEntradaArranjo;
     
     
     /**
@@ -22,28 +22,25 @@ public class Desenhista extends JFrame {
     public Desenhista() {
         
         // Cria e configura botão Desenhar Arranjo
-        btnDesenhar = new JButton("Desenhar!");
-        btnDesenhar.addActionListener(new ActionListener() {
+        btnDesenharArranjo = new JButton("Desenhar Arranjo");
+        btnDesenharArranjo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Verifica o desenho escolhido no ComboBox e repassa à tela para pintura
-                String desenho = (String) boxListaDesenhos.getSelectedItem();
-                tela.setDesenho(desenho);
+                tela.setArranjo(txtEntradaArranjo.getText());
                 tela.repaint();
                 requestFocusInWindow();
             } 
         });
         
         // Cria e configura o campo de entrada de arranjos
-        String nomesExercicios[] = { "Desenho Livre", "Asterisco", "Smiles", "Computador", "Polígono" };
-        boxListaDesenhos = new JComboBox<String>(nomesExercicios);
+        txtEntradaArranjo = new JTextField("3,1,4", 20);
         
         // Campo para abrigar e organizar os botões e campos de entrada
         JPanel pnlBotoes = new JPanel(new FlowLayout());
-        pnlBotoes.add(boxListaDesenhos);
-        pnlBotoes.add(btnDesenhar);
+        pnlBotoes.add(btnDesenharArranjo);
+        pnlBotoes.add(txtEntradaArranjo);
         
         // Cria e configura a tela do desenhista
-        tela = new Tela(/*txtEntradaArranjo.getText()*/);
+        tela = new TelaDoArranjo(txtEntradaArranjo.getText());
         tela.setPreferredSize(new Dimension(800, 600));
 
         // Container que organiza o posicionamento dos botões e da tela

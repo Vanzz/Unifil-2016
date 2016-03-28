@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=n\ k
+comment0.target=int\ resolverBinomio(int,\ int)
+comment0.text=\n\ M\u00E9todo\ que\ resolve\ o\ bin\u00F4mio\ de\ Newton\n\ @param\ n\ -\ primeiro\ n\u00FAmero\ do\ binomio;\ k\ -\ segundo\ n\u00FAmero\ do\ binomio\n\ @return\ resultado\ da\ equa\u00E7\u00E3o\n
+comment1.params=n\ k
+comment1.target=int\ resolverBinomioPascal(int,\ int)
+comment2.params=nP
+comment2.target=int\ fatorial(int)
+comment2.text=\n\ M\u00E9todo\ que\ resolve\ fatorial\n\ @param\ nP\ -\ n\u00FAmero\ a\ ser\ fatorado\n\ @return\ o\ resultado\ da\ fatora\u00E7\u00E3o\n
+numComments=3
