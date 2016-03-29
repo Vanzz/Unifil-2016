@@ -1,0 +1,20 @@
+dados->qtde_letras = strlen(palavra);
+A função strlen() retorna o número de caracteres contidos na string palavra, sem contar com o caractere delimitador.
+
+memset(dados->oculta, ‘_’, dados->qtde_letras);
+A função memset() inicializa um bloco de memória com valor 0, substitui as letras da palavra com '_'.
+
+memset(dados->letras_tentadas, NAO_TENTADO, sizeof(dados->letras_tentadas));
+A função memset() guarda na memória as letras que ja foram tentadas, para que não possa repetir.
+
+if (strchr(palavra, tentativa) != NULL){
+A função strchar, ele vê se o primeiro char, nesse caso é diferente de null.
+
+strcpy(lista->palavras[lista->contador], palavra);
+Copia a string, para saber o tamanho da palavra, alimentando o contador
+
+if(fscanf(arq, "%s\n", palavra) == 0){
+fscanf, funciona como a Stream de Java, lendo o arquivo .txt.
+
+exit(!0);
+Serve para sair do metodo que estiver, /quit.
