@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=a\ n
+comment0.target=int\ buscaSeq(int[],\ int)
+comment0.text=\n\ M\u00E9todo\ de\ busca\ sequencial\n\ @param\ a\ -\ arranjo\ a\ ser\ buscado;\ n\ -\ n\u00FAmero\ a\ ser\ encontrado\n\ @return\ posi\u00E7\u00E3o\ do\ n\n
+comment1.params=a\ n
+comment1.target=int\ buscaBin(int[],\ int)
+comment1.text=\n\ M\u00E9todo\ de\ busca\ bin\u00E1rio\n\ @param\ a\ -\ arranjo\ a\ ser\ buscado;\ n\ -\ n\u00FAmero\ a\ ser\ encontrado\n\ @return\ posi\u00E7\u00E3o\ do\ n\n
+numComments=2

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=
+comment0.target=BuscasTest()
+comment0.text=\n\ Construtor\ default\ para\ a\ classe\ de\ teste\ BuscasTest\n
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\n\ Define\ a\ .\n\n\ Chamado\ antes\ de\ cada\ m\u00E9todo\ de\ caso\ de\ teste.\n
+comment2.params=
+comment2.target=void\ testeBuscaSeq()
+comment3.params=
+comment3.target=void\ testeBuscaBin()
+comment4.params=
+comment4.target=void\ tearDown()
+comment4.text=\n\ Tears\ down\ the\ test\ fixture.\n\n\ Chamado\ ap\u00F3s\ cada\ m\u00E9todo\ de\ teste\ de\ caso.\n
+numComments=5
