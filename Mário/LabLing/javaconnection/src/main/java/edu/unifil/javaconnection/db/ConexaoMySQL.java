@@ -33,4 +33,18 @@ public class ConexaoMySQL {
         return connection;
     }
     
+    public static Connection testConexao() throws Exception{
+        Connection connection = null;        
+        
+        String driverName = "com.mysql.jdbc.Driver"; 
+        Class.forName(driverName);
+
+        ReadJSONConfig readJSONConfig = new ReadJSONConfig();
+        String[] config = readJSONConfig.getTest();
+        
+        connection = DriverManager.getConnection(config[2], config[1], config[0]);
+        
+        return connection;
+    }
+    
 }

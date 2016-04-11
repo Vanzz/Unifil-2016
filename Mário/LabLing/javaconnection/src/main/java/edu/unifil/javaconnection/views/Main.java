@@ -6,9 +6,17 @@
 package edu.unifil.javaconnection.views;
 
 import edu.unifil.javaconnection.controllers.PessoaController;
+import edu.unifil.javaconnection.db.ConexaoMySQL;
 import edu.unifil.javaconnection.models.Pessoa;
 import edu.unifil.javaconnection.views.tablemodels.PessoaTableModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,7 +37,7 @@ public class Main extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         pessoaTableModel = new PessoaTableModel();
-        pessoaController =new PessoaController();
+        pessoaController = new PessoaController();
         pessoaTableModel.setListaPessoas((ArrayList<Pessoa>) pessoaController.getAll()); 
         tablePessoa.setModel(pessoaTableModel);
         fieldClear();
@@ -110,6 +118,12 @@ public class Main extends javax.swing.JFrame {
         );
 
         lbBuscar.setText("Buscar:");
+
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
 
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
@@ -300,6 +314,11 @@ public class Main extends javax.swing.JFrame {
         Configuracoes.main(null);
     }//GEN-LAST:event_btnConfigActionPerformed
 
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        pessoaTableModel.setListaPessoas(null);
+        pessoaTableModel.setListaPessoas((ArrayList<Pessoa>) search());
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
     private void fieldClear() {
         txtNome.setText(null);
         txtIdade.setText(null);
@@ -311,6 +330,46 @@ public class Main extends javax.swing.JFrame {
         pessoaTableModel.setListaPessoas((ArrayList<Pessoa>) pessoaController.getAll());
     }
     boolean isFarol = false;
+    
+    private Connection con;
+    public List<Pessoa> search() {
+        List<Pessoa> listaPessoa = new ArrayList();
+        
+        try {
+            con = ConexaoMySQL.getConexao();
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String query = "select * from pessoa where nome like '%"+txtBuscar.getText()+"%' or id like '%"+txtBuscar.getText()+"%' or email like '%"+txtBuscar.getText()+"%' or idade like '%"+txtBuscar.getText()+"%'";
+        
+        //System.out.println(query);
+        try {
+            PreparedStatement pS = con.prepareStatement(query);
+            //System.out.println(txtBuscar.getText());
+            //pS.setString(1, txtBuscar.getText());
+            //pS.execute();
+            ResultSet rS = pS.executeQuery();
+            
+            while (rS.next()) {
+                Pessoa p = new Pessoa();
+
+                p.setId(rS.getLong("Id"));
+                p.setNome(rS.getString("Nome"));
+                p.setIdade(rS.getInt("Idade"));
+                p.setEmail(rS.getString("Email"));
+                //System.out.println(p);
+                listaPessoa.add(p);
+            }
+            rS.close();
+            pS.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PessoaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (Pessoa pessoa : listaPessoa) {
+            System.out.println(pessoa);
+        }
+        return listaPessoa;
+    }
 
     /**
      * @param args the command line arguments

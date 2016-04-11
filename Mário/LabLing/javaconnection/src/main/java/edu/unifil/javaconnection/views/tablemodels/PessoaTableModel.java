@@ -80,6 +80,7 @@ public class PessoaTableModel extends AbstractTableModel {
      */
     public void setListaPessoas(ArrayList <Pessoa> listaPessoas) {
         this.listaPessoas = listaPessoas;
+        this.fireTableDataChanged();
     }
     
 }

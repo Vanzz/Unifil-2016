@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=num
+comment0.target=int\ comprimentoSequencia(int)
+comment1.params=num
+comment1.target=int\ comprimentoSequenciaRec(int)
+comment2.params=num\ x
+comment2.target=int\ cSRH(int,\ int)
+numComments=3

@@ -88,10 +88,11 @@ public class PessoaController {
         String query = "SELECT * FROM PESSOA";
         List<Pessoa> listaPessoa = new ArrayList();
         try {
-            //Preapara o statement da query de conexão
+            //Prepara o statement da query de conexão
             PreparedStatement pS = con.prepareStatement(query);
             //Retorna da query executada
             ResultSet rS = pS.executeQuery();
+            
             //Enquanto existir próximo na query executada (se quiser primeira linha rS.first();)
             while (rS.next()) {
                 Pessoa p = new Pessoa();
@@ -103,6 +104,8 @@ public class PessoaController {
 
                 listaPessoa.add(p);
             }
+            rS.close();
+            pS.close();
         } catch (SQLException ex) {
             Logger.getLogger(PessoaController.class.getName()).log(Level.SEVERE, null, ex);
         }

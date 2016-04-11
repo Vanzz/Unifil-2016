@@ -69,6 +69,10 @@ public class Label extends Actor
         updateImage();
     }
     
+    public String getValue(){
+        return this.value;
+    }
+    
     /**
      * Sets the line color of the text
      * 

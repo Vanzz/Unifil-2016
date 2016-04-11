@@ -1,7 +1,1 @@
-{
-    "username": "root",
-    "password": "root",
-    "url": "localhost",
-    "database": "lab3",
-    "port": "8889"
-}
+{"port":"8889","mostrar":"1001","username":"root","editar":"1001","ordenar":"1001","password":"root","database":"lab3","url":"localhost"}

@@ -5,9 +5,17 @@
  */
 package edu.unifil.javaconnection.views;
 
+import edu.unifil.javaconnection.db.ConexaoMySQL;
 import edu.unifil.javaconnection.misc.ReadJSONConfig;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -15,12 +23,13 @@ import java.util.logging.Logger;
  */
 public class Configuracoes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Configuracoes
-     */
+    private Connection con;
+
+    private String mo, ed, or;
+
     public Configuracoes() {
         initComponents();
-        
+
         try {
             carregarDadosArquivo();
         } catch (Exception ex) {
@@ -28,8 +37,7 @@ public class Configuracoes extends javax.swing.JFrame {
         }
     }
 
-    
-    public void carregarDadosArquivo() throws Exception{
+    public void carregarDadosArquivo() throws Exception {
         ReadJSONConfig readJSONConfig = new ReadJSONConfig();
         String[] config = readJSONConfig.getAllConfig();
         txtPassword.setText(config[0]);
@@ -37,8 +45,51 @@ public class Configuracoes extends javax.swing.JFrame {
         txtURL.setText(config[2]);
         txtPort.setText(config[3]);
         txtDatabase.setText(config[4]);
+        
+        char[] m = config[5].toCharArray();
+        char[] e = config[6].toCharArray();
+        char[] o = config[7].toCharArray();
+        
+        JCheckBox[] editar = {chckboxEditarId, chckboxEditarNome,
+            chckboxEditarEmail, chckboxEditarIdade};
+        JCheckBox[] mostrar = {chckboxMostrarId, chckboxMostrarNome,
+            chckboxMostrarEmail, chckboxMostrarIdade};
+        JCheckBox[] ordenar = {chckboxOrdenarId, chckboxOrdenarNome,
+            chckboxOrdenarEmail, chckboxOrdenarIdade};
+
+        for(int i = 0; i < 4; i++) {
+            verify(mostrar[i], m[i]);
+            verify(editar[i], e[i]);
+            verify(ordenar[i], o[i]);
+        }
+        
+//        verify(mostrar[0], m[0]);
+//        verify(mostrar[1], m[1]);
+//        verify(mostrar[2], m[2]);
+//        verify(mostrar[3], m[3]);
+//
+//        verify(editar[0], e[0]);
+//        verify(editar[1], e[1]);
+//        verify(editar[2], e[2]);
+//        verify(editar[3], e[3]);
+//
+//        verify(ordenar[0], o[0]);
+//        verify(ordenar[1], o[1]);
+//        verify(ordenar[2], o[2]);
+//        verify(ordenar[3], o[3]);
+
     }
-    
+
+    public static boolean verify(JCheckBox check, char letter) {
+        if (letter == '1') {
+            check.setSelected(true);
+            return true;
+        } else {
+            check.setSelected(false);
+            return false;
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,7 +111,7 @@ public class Configuracoes extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         btnTestarConexao = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
-        jPanel2 = new javax.swing.JPanel();
+        Tabela = new javax.swing.JPanel();
         chckboxMostrarId = new javax.swing.JCheckBox();
         chckboxMostrarNome = new javax.swing.JCheckBox();
         chckboxMostrarEmail = new javax.swing.JCheckBox();
@@ -94,7 +145,18 @@ public class Configuracoes extends javax.swing.JFrame {
 
         jLabel5.setText("password:");
 
+        txtURL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtURLActionPerformed(evt);
+            }
+        });
+
         btnTestarConexao.setText("Testar Conexão");
+        btnTestarConexao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestarConexaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,7 +207,7 @@ public class Configuracoes extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela"));
+        Tabela.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabela"));
 
         chckboxMostrarId.setText("#");
 
@@ -177,14 +239,14 @@ public class Configuracoes extends javax.swing.JFrame {
 
         chckboxOrdenarIdade.setText("Idade");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout TabelaLayout = new javax.swing.GroupLayout(Tabela);
+        Tabela.setLayout(TabelaLayout);
+        TabelaLayout.setHorizontalGroup(
+            TabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TabelaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(TabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TabelaLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                         .addComponent(chckboxMostrarId)
@@ -194,7 +256,7 @@ public class Configuracoes extends javax.swing.JFrame {
                         .addComponent(chckboxMostrarEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chckboxMostrarIdade))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(TabelaLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(chckboxEditarId)
@@ -204,7 +266,7 @@ public class Configuracoes extends javax.swing.JFrame {
                         .addComponent(chckboxEditarEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chckboxEditarIdade))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(TabelaLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(chckboxOrdenarId)
@@ -216,25 +278,25 @@ public class Configuracoes extends javax.swing.JFrame {
                         .addComponent(chckboxOrdenarIdade)))
                 .addGap(14, 14, 14))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        TabelaLayout.setVerticalGroup(
+            TabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TabelaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(TabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(chckboxMostrarId)
                     .addComponent(chckboxMostrarNome)
                     .addComponent(chckboxMostrarEmail)
                     .addComponent(chckboxMostrarIdade)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(TabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(chckboxEditarId)
                     .addComponent(chckboxEditarNome)
                     .addComponent(chckboxEditarEmail)
                     .addComponent(chckboxEditarIdade)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(TabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(chckboxOrdenarId)
                     .addComponent(chckboxOrdenarNome)
                     .addComponent(chckboxOrdenarEmail)
@@ -246,8 +308,18 @@ public class Configuracoes extends javax.swing.JFrame {
         btnCancelar.setText("Cancelar");
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -265,7 +337,7 @@ public class Configuracoes extends javax.swing.JFrame {
                         .addComponent(btnFechar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Tabela, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -276,7 +348,7 @@ public class Configuracoes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Tabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -287,6 +359,91 @@ public class Configuracoes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtURLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtURLActionPerformed
+
+    }//GEN-LAST:event_txtURLActionPerformed
+
+    private void btnTestarConexaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestarConexaoActionPerformed
+
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        String url = txtURL.getText();
+        String database = txtDatabase.getText();
+        String port = txtPort.getText();
+
+        JSONObject jSON = new JSONObject();
+
+        jSON.put("username", username);
+        jSON.put("password", password);
+        jSON.put("url", url);
+        jSON.put("database", database);
+        jSON.put("port", port);
+        System.out.println(jSON.toJSONString());
+
+        try (FileWriter fw = new FileWriter("config/configTest.json")) {
+            fw.write(jSON.toJSONString());
+        } catch (IOException ex) {
+
+        }
+        testarConexao();
+    }//GEN-LAST:event_btnTestarConexaoActionPerformed
+
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+
+        //Salvar conexão se o teste for true
+        if (testarConexao()) {
+            String username = txtUsername.getText();
+            String password = txtPassword.getText();
+            String url = txtURL.getText();
+            String database = txtDatabase.getText();
+            String port = txtPort.getText();
+
+            JSONObject jSON = new JSONObject();
+
+            jSON.put("username", username);
+            jSON.put("password", password);
+            jSON.put("url", url);
+            jSON.put("database", database);
+            jSON.put("port", port);
+            
+            JCheckBox[] editar = {chckboxEditarId, chckboxEditarNome,
+                chckboxEditarEmail, chckboxEditarIdade};
+            JCheckBox[] mostrar = {chckboxMostrarId, chckboxMostrarNome,
+                chckboxMostrarEmail, chckboxMostrarIdade};
+            JCheckBox[] ordenar = {chckboxOrdenarId, chckboxOrdenarNome,
+                chckboxOrdenarEmail, chckboxOrdenarIdade};
+            mo = arruma(mostrar);
+            ed = arruma(editar);
+            or = arruma(ordenar);
+            jSON.put("mostrar", mo);
+            jSON.put("editar", ed);
+            jSON.put("ordenar", or);
+
+            try (FileWriter fw = new FileWriter("config/config.json")) {
+                fw.write(jSON.toJSONString());
+            } catch (IOException ex) {
+
+            }
+        }
+        this.dispose();
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    public String arruma(JCheckBox []check) {
+        String rs = "";
+        for (JCheckBox jCheckBox : check) {
+            if(jCheckBox.isSelected()){
+                rs+= ""+1;
+            } else {
+                rs+= ""+0;
+            }
+        }
+        return rs;
+    }
 
     /**
      * @param args the command line arguments
@@ -324,6 +481,7 @@ public class Configuracoes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Tabela;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSalvar;
@@ -349,11 +507,21 @@ public class Configuracoes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtDatabase;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPort;
     private javax.swing.JTextField txtURL;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    private boolean testarConexao() {
+        try {
+            con = ConexaoMySQL.testConexao();
+            JOptionPane.showMessageDialog(null, "Conexão bem sucedida!");
+            return true;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Conexão mal sucedida!");
+            return false;
+        }
+    }
 }

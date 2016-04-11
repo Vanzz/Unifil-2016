@@ -13,6 +13,7 @@ public class MyWorld extends World
     private int NEXT = 50;
     Add addButton;
     Remove removeButton;
+    Buscar buscarButton;
 
     Lista lista = new Lista();
     /**
@@ -28,10 +29,12 @@ public class MyWorld extends World
     public void started(){
         addButton = new Add();
         removeButton = new Remove();
+        buscarButton = new Buscar();
 
         this.addObject(addButton, LARGURA-addButton.getImage().getWidth(), ALTURA-2*addButton.getImage().getHeight());
         this.addObject(removeButton, LARGURA-removeButton.getImage().getWidth(), ALTURA-removeButton.getImage().getHeight());
-
+        this.addObject(buscarButton, LARGURA-buscarButton.getImage().getWidth(), ALTURA-3*buscarButton.getImage().getHeight());
+        
         Pessoa p = new Pessoa();
         Node n = new Node(p);
         lista.inserirFinal(n);
@@ -69,12 +72,33 @@ public class MyWorld extends World
             {                
                 jafui = false;
                 //System.out.println("\t[REMOVER] | \n"+lista.getLast());
+                
                 this.removeObject(lista.getLast().getPessoa());   
                 this.removeObject(lista.getLast().getNome());
                 this.removeObject(lista.getLast().getIdade());
                 lista.remover(lista.getSize());
                 NEXT-= 50;
             }                
+        }
+        
+        if(Greenfoot.mouseClicked(buscarButton)){
+            if(Greenfoot.getMouseInfo() != null) 
+            {
+                IconBuscar iB = new IconBuscar();
+                
+                String comp = Greenfoot.ask("Digite o nome da pessoa:");
+                for(int i = 1; i < lista.getSize(); i++) {
+                    addObject(iB, lista.getNode(i).getPessoa().getX(), ALTURA/2 + 60);
+                    if(comp.equals(lista.getNode(i).getNome().getValue())){
+                        lista.getNode(i);
+                        Greenfoot.delay(120);
+                        removeObject(iB);
+                        break;
+                    }
+                    Greenfoot.delay(120);
+                    removeObject(iB);
+                }
+            }
         }
 
         if(Greenfoot.isKeyDown("p") && !jafui)

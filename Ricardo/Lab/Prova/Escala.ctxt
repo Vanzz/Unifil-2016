@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=x\ y\ w\ h
+comment0.target=Escala(float,\ float,\ float,\ float)
+comment0.text=\n\ Construtor\ da\ classe\ Escala\n\ @param\ x\ -\ x;\ y\ -\ y;\ w\ -\ width;\ h\ -\ height;\n
+comment1.params=dim
+comment1.target=int\ getX(java.awt.Dimension)
+comment1.text=\n\ M\u00E9todo\ getX\ redimension\u00E1vel\n\ @param\ dim\ -\ dimensionador;\n\ @return\ o\ x\ redimensionado;\n
+comment2.params=dim
+comment2.target=int\ getY(java.awt.Dimension)
+comment2.text=\n\ M\u00E9todo\ getY\ redimension\u00E1vel\n\ @param\ dim\ -\ dimensionador;\n\ @return\ o\ y\ redimensionado;\n
+comment3.params=dim
+comment3.target=int\ getW(java.awt.Dimension)
+comment3.text=\n\ M\u00E9todo\ getW\ redimension\u00E1vel\n\ @param\ dim\ -\ dimensionador;\n\ @return\ o\ width\ redimensionado;\n
+comment4.params=dim
+comment4.target=int\ getH(java.awt.Dimension)
+comment4.text=\n\ M\u00E9todo\ getH\ redimension\u00E1vel\n\ @param\ dim\ -\ dimensionador;\n\ @return\ o\ height\ redimensionado;\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\n\ M\u00E9todo\ toString\ da\ classe\n\ @return\ suas\ propriedades\:\ x,y,w,h;\n
+numComments=6
