@@ -12,6 +12,7 @@ public class Node
     Label nome;
     Label idade;
     Node node;
+    Node ant;
     
     public Node()
     {
@@ -71,5 +72,15 @@ public class Node
     public Node getProximo() 
     {
         return node;
+    }
+    
+    public void setAnterior(Node _node)
+    {
+        this.ant = _node;
+    }
+    
+    public Node getAnterior()
+    {
+        return ant;
     }
 }

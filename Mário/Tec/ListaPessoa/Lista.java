@@ -29,12 +29,14 @@ public class Lista
     public void inserirFinal(Node _node){
         if(inicio == null){
             inicio = _node;
+            inicio.setAnterior(null);
         }else{
             Node aux = inicio;
             while(aux.getProximo() != null){
                 aux = aux.getProximo();
             }
             aux.setProximo(_node);
+            _node.setAnterior(aux);
         }
     }
 
@@ -66,18 +68,23 @@ public class Lista
 
     public void remover(int position)
     {
-        if(position == 1){
+        if(position == 1) {
+            inicio = inicio.getProximo();
+        }
+        else if(position == 1 && getSize() > 1){
+            getNode(position+1).setAnterior(null);
             inicio = inicio.getProximo();
         }else if(position == getSize()){
             getNode(position-1).setProximo(null); 
         }else{
-            getNode(position-1).setProximo(getNode(position+1)); 
+            getNode(position+1).setAnterior(getNode(position-1));
+            getNode(position-1).setProximo(getNode(position+1));
         }
     }
 
     public Node getLast() {
         if(inicio == null){
-           return inicio;
+            return inicio;
         }else{
             Node aux = inicio;
             while(aux.getProximo() != null){
@@ -86,7 +93,7 @@ public class Lista
             return aux;
         }
     }
-    
+
     public Node getNode(int position)
     {
         if(isEmpty() || position < 1 || position > getSize())
@@ -126,8 +133,16 @@ public class Lista
     {
         for(int i = 1; i <= getSize(); i++)
         {
-            System.out.println(getNode(i));
+            System.out.println(getNode(i)+"\nProx:\n->"+getNode(i).getProximo()+"\nAnt:->"+getNode(i).getAnterior());
         }
+    }
+
+    public Node getAnterior(Node _node) {
+        Node aux = inicio;
+        while(aux.getProximo() != _node) {
+            aux = aux.getProximo();
+        }
+        return aux;
     }
 
     public int getSize()
@@ -150,6 +165,36 @@ public class Lista
         return size;
     }
 
+    public void bubblesortAsc(){
+        boolean troca = true;
+        int j = 0;
+        Node aux = inicio;
+        while(aux.getProximo() != null){
+            troca = false;
+            System.out.println(aux.getIdade().getValue()+":"+Integer.parseInt(aux.getProximo().getIdade().getValue()));
+            if (Integer.parseInt(aux.getIdade().getValue()) > Integer.parseInt(aux.getProximo().getIdade().getValue()))//if(a[i] > a[i+1])
+            {
+                Node tmp = aux;
+                aux.setProximo(aux.getProximo().getProximo());
+
+                getAnterior(aux).setProximo(aux.getProximo());
+
+                tmp.getProximo().setProximo(aux);
+            }
+            aux = aux.getProximo();
+        }
+    }
+
+    private void trocar(int i, int j)
+    {
+        // lista.getNode(i);
+        // lista.getNode(j);
+
+        // Node aux = lista.getNode(i);
+        // lista.getNode(i).setProximo(lista.getNode(j));
+        // lista.getNode(j).setProximo(aux);
+    }
+
     public boolean isEmpty(){
         if(inicio == null){
             return true;
@@ -158,3 +203,4 @@ public class Lista
         }
     }
 }
+

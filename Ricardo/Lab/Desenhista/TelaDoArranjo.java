@@ -128,7 +128,7 @@ class TelaDoArranjo extends JPanel {
         exibirInfosUteis(g2d);
         // Seu código desenhista começa aqui!
         Dimension dim = getSize();
-
+        
         desenhaColunas(g2d, a, b, dim);
     }
     /******************************************

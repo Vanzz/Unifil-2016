@@ -29,7 +29,7 @@ public class Configuracoes extends javax.swing.JFrame {
 
     public Configuracoes() {
         initComponents();
-
+    this.setLocationRelativeTo(null);
         try {
             carregarDadosArquivo();
         } catch (Exception ex) {
@@ -62,22 +62,6 @@ public class Configuracoes extends javax.swing.JFrame {
             verify(editar[i], e[i]);
             verify(ordenar[i], o[i]);
         }
-        
-//        verify(mostrar[0], m[0]);
-//        verify(mostrar[1], m[1]);
-//        verify(mostrar[2], m[2]);
-//        verify(mostrar[3], m[3]);
-//
-//        verify(editar[0], e[0]);
-//        verify(editar[1], e[1]);
-//        verify(editar[2], e[2]);
-//        verify(editar[3], e[3]);
-//
-//        verify(ordenar[0], o[0]);
-//        verify(ordenar[1], o[1]);
-//        verify(ordenar[2], o[2]);
-//        verify(ordenar[3], o[3]);
-
     }
 
     public static boolean verify(JCheckBox check, char letter) {
@@ -390,7 +374,9 @@ public class Configuracoes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTestarConexaoActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        Main.main(null);
         this.dispose();
+        
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -430,6 +416,7 @@ public class Configuracoes extends javax.swing.JFrame {
 
             }
         }
+        Main.main(null);
         this.dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
