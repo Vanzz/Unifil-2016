@@ -6,6 +6,7 @@
 package edu.unifil.javaconnection.controllers;
 
 import edu.unifil.javaconnection.db.ConexaoMySQL;
+import edu.unifil.javaconnection.misc.ReadJSONConfig;
 import edu.unifil.javaconnection.models.Pessoa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,7 +26,7 @@ public class PessoaController {
 
     private Connection con;
 
-    public PessoaController() {
+public PessoaController() {
         try {
             this.con = ConexaoMySQL.getConexao();
         } catch (Exception ex) {
@@ -141,6 +142,66 @@ public class PessoaController {
         st.close();
 
         return pessoas;
+    }
+    
+    public List<Pessoa> list(String ordenar) throws Exception {
+        String[] config;
+        config = ReadJSONConfig.getAllConfig();
+        char[] aux = config[config.length - 1].toCharArray();
+        int [] p = new int[aux.length];
+        int temp = 0;
+        for(int i = 0; i < p.length; i++){
+            if (aux[i] == '1'){
+                p[temp++] = i;
+            }
+        }
+        
+        for(int i = 0; i < p.length; i++){
+            switch(p[i]){
+                case 0:
+                    ordenar += " id,";
+                    break;
+                case 1:
+                    ordenar += " nome,";
+                    break;
+                case 2:
+                    ordenar += " email,";
+                    break;
+                case 3:
+                    ordenar += " idade,";
+                    break;
+            }
+        }
+        ordenar = ordenar.substring(0, ordenar.length() - 1);
+        
+        //Query é um comando do SQL
+        String query = "SELECT * FROM PESSOA "+ordenar;
+        System.out.println(""+query);
+        List<Pessoa> listaPessoa = new ArrayList();
+        try {
+            //Prepara o statement da query de conexão
+            PreparedStatement pS = con.prepareStatement(query);
+            //Retorna da query executada
+            ResultSet rS = pS.executeQuery();
+            
+            //Enquanto existir próximo na query executada (se quiser primeira linha rS.first();)
+            while (rS.next()) {
+                Pessoa pessoa = new Pessoa();
+
+                pessoa.setId(rS.getLong("Id"));
+                pessoa.setNome(rS.getString("Nome"));
+                pessoa.setIdade(rS.getInt("Idade"));
+                pessoa.setEmail(rS.getString("Email"));
+
+                listaPessoa.add(pessoa);
+            }
+            rS.close();
+            pS.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(PessoaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+        return listaPessoa;
     }
 
 }

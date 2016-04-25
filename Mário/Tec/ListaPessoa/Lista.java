@@ -166,33 +166,28 @@ public class Lista
     }
 
     public void bubblesortAsc(){
-        boolean troca = true;
-        int j = 0;
-        Node aux = inicio;
-        while(aux.getProximo() != null){
-            troca = false;
-            System.out.println(aux.getIdade().getValue()+":"+Integer.parseInt(aux.getProximo().getIdade().getValue()));
-            if (Integer.parseInt(aux.getIdade().getValue()) > Integer.parseInt(aux.getProximo().getIdade().getValue()))//if(a[i] > a[i+1])
-            {
-                Node tmp = aux;
-                aux.setProximo(aux.getProximo().getProximo());
+        Node rolezero = inicio;
+        Node alce = inicio;
+        Node alceliar;
+        while(rolezero.getProximo() != null){
+            System.out.println(Integer.parseInt(rolezero.getIdade().getValue())+":"+Integer.parseInt(rolezero.getProximo().getIdade().getValue()));
+            if(Integer.parseInt(rolezero.getIdade().getValue()) > Integer.parseInt(rolezero.getProximo().getIdade().getValue())){
 
-                getAnterior(aux).setProximo(aux.getProximo());
+                alce = rolezero;
+                alceliar = alce.getProximo();
 
-                tmp.getProximo().setProximo(aux);
+                trocar(alce, alceliar);
             }
-            aux = aux.getProximo();
+            rolezero = rolezero.getProximo();
         }
     }
 
-    private void trocar(int i, int j)
-    {
-        // lista.getNode(i);
-        // lista.getNode(j);
-
-        // Node aux = lista.getNode(i);
-        // lista.getNode(i).setProximo(lista.getNode(j));
-        // lista.getNode(j).setProximo(aux);
+    public boolean trocar(Node alce, Node alceliar) {
+        alce.setProximo(alceliar.getProximo());
+        alceliar.setProximo(alce);
+        alceliar.setAnterior(alce.getAnterior());
+        alce.setAnterior(alceliar);
+        return true;
     }
 
     public boolean isEmpty(){

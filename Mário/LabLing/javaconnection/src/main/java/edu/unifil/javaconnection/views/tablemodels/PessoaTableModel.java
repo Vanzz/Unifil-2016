@@ -5,6 +5,7 @@
  */
 package edu.unifil.javaconnection.views.tablemodels;
 
+import edu.unifil.javaconnection.controllers.PessoaController;
 import edu.unifil.javaconnection.misc.ReadJSONConfig;
 import edu.unifil.javaconnection.models.Pessoa;
 import java.util.ArrayList;
@@ -22,10 +23,27 @@ public class PessoaTableModel extends AbstractTableModel {
     String colunas[] = {"#", "Nome", "E-mail", "Idade"};
     private ArrayList<Pessoa> listaPessoas = new ArrayList<>();
     String[] config;
-
+    PessoaController pessoaController;
+    
     public PessoaTableModel() {
+        pessoaController = new PessoaController();
+        boolean aux = false;
         try {
             config = readJSONConfig.getAllConfig();
+            char[] o = config[7].toCharArray();
+            
+            for(char n: o){
+                if(n == '1'){
+                    aux = true;
+                    break;
+                }
+            }
+            if(!aux){
+                listaPessoas = (ArrayList<Pessoa>) pessoaController.getAll();
+            } else {
+                listaPessoas = (ArrayList<Pessoa>) pessoaController.list("order by");
+            }
+    
         } catch (Exception ex) {
             Logger.getLogger(PessoaTableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -119,21 +137,50 @@ public class PessoaTableModel extends AbstractTableModel {
                 return getListaPessoas().get(rowIndex);
         }
     }
+    
+    @Override
+    public void setValueAt(Object a, int rowIndex, int columnIndex){
+        Pessoa p = getPessoa(rowIndex);
+        
+        if(a != null){
+            switch(columnIndex){
+                case 0:
+                    break;
+                case 1:
+                    p.setNome(a.toString());
+                    fireTableRowsUpdated(rowIndex, rowIndex);
+                    break;
+                case 2:
+                    p.setEmail(a.toString());
+                    fireTableRowsUpdated(rowIndex, rowIndex);
+                    break;
+                case 3:
+                    p.setIdade(Integer.parseInt(a.toString()));
+                    fireTableRowsUpdated(rowIndex, rowIndex);
+                    break;
+            }
+            pessoaController.update(getPessoa(rowIndex));
+        }
+    }
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         char[] editar = config[6].toCharArray();
         
-        int[] g = new int[editar.length];
+        boolean[] g = new boolean[editar.length];
         int cont = 0;
         System.out.println(config[6]);
         for (int i = 0; i < editar.length; i++) {
             if (editar[i] == '1') {
-                g[cont++] = i;
-            } 
+                g[cont++] = true;
+            } else {
+                g[cont++] = false;
+            }
         }
-        
-       return (editar[g[columnIndex]] == '1');
+       //System.out.println(""+(editar[g[columnIndex]] == '1'));
+       //return (boolean)(editar[g[columnIndex]] == '1');
+        System.out.println(""+g[columnIndex]);
+       return (boolean) g[columnIndex];
     }
 
     /**

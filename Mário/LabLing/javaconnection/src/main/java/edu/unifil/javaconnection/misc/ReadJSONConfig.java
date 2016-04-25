@@ -34,7 +34,7 @@ public class ReadJSONConfig {
         return configuracoes;
     }
     
-    public String[] getAllConfig() throws Exception{
+    public static String[] getAllConfig() throws Exception{
         JSONParser parser = new JSONParser();
         String[] configuracoes = new String[8];
 
@@ -50,7 +50,7 @@ public class ReadJSONConfig {
         configuracoes[5] = (String) jsonObject.get("mostrar");
         configuracoes[6] = (String) jsonObject.get("editar");
         configuracoes[7] = (String) jsonObject.get("ordenar");
-        System.out.println(jsonObject.values());
+        //System.out.println(jsonObject.values());
 
         return configuracoes;
     }

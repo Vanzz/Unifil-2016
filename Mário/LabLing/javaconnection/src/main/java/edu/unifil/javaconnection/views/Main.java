@@ -38,8 +38,9 @@ public class Main extends javax.swing.JFrame {
         
         pessoaTableModel = new PessoaTableModel();
         pessoaController = new PessoaController();
-        pessoaTableModel.setListaPessoas((ArrayList<Pessoa>) pessoaController.getAll()); 
+
         tablePessoa.setModel(pessoaTableModel);
+        
         fieldClear();
     }
 
@@ -327,8 +328,9 @@ public class Main extends javax.swing.JFrame {
         txtBuscar.setText(null);
         id_aux = -1;
         txtNome.requestFocus();
-        pessoaTableModel.setListaPessoas(null);
-        pessoaTableModel.setListaPessoas((ArrayList<Pessoa>) pessoaController.getAll());
+        pessoaTableModel = new PessoaTableModel();
+        tablePessoa.setModel(pessoaTableModel);
+    
     }
     boolean isFarol = false;
     
