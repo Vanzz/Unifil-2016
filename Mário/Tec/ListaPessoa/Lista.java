@@ -167,27 +167,75 @@ public class Lista
 
     public void bubblesortAsc(){
         Node rolezero = inicio;
+        Node rolezero2;
         Node alce = inicio;
         Node alceliar;
-        while(rolezero.getProximo() != null){
-            System.out.println(Integer.parseInt(rolezero.getIdade().getValue())+":"+Integer.parseInt(rolezero.getProximo().getIdade().getValue()));
-            if(Integer.parseInt(rolezero.getIdade().getValue()) > Integer.parseInt(rolezero.getProximo().getIdade().getValue())){
+        // while(rolezero.getProximo() != null){
+        // rolezero2 = rolezero;
+        // while(rolezero2.getProximo() != null){
+        // System.out.println(Integer.parseInt(rolezero.getIdade().getValue())+":"+Integer.parseInt(rolezero2.getProximo().getIdade().getValue()));
+        // if(Integer.parseInt(rolezero.getIdade().getValue()) > Integer.parseInt(rolezero2.getProximo().getIdade().getValue())){
 
-                alce = rolezero;
-                alceliar = alce.getProximo();
+        // alce = rolezero;
+        // alceliar = rolezero2;
 
-                trocar(alce, alceliar);
+        // trocar(alce, alceliar);
+        // }
+        // rolezero2 = rolezero2.getProximo();
+        // }
+        // rolezero = rolezero.getProximo();
+        // }
+
+        for(int i = 1; i <= getSize(); i++) {
+            for(int j = i; j <= getSize(); j++){
+                System.out.println(Integer.parseInt(getNode(i).getIdade().getValue())+":"+Integer.parseInt(getNode(j).getIdade().getValue()));
+                System.out.println(getSize()+" i:"+i+" j:"+j);
+                System.out.println("inicio: "+inicio.getNome().getValue());
+                if(Integer.parseInt(getNode(i).getIdade().getValue()) > Integer.parseInt(getNode(j).getIdade().getValue())){
+                    trocar(getNode(i), getNode(j));
+                }
+
+                isInicio();
             }
-            rolezero = rolezero.getProximo();
         }
     }
 
-    public boolean trocar(Node alce, Node alceliar) {
-        alce.setProximo(alceliar.getProximo());
-        alceliar.setProximo(alce);
-        alceliar.setAnterior(alce.getAnterior());
-        alce.setAnterior(alceliar);
-        return true;
+    public void isInicio() {
+        for(int i = 1; i <= getSize(); i++){
+            if(getNode(i).getAnterior() == null) {
+                this.inicio = getNode(i);
+            }
+        }
+    }
+
+    public void trocar(Node p, Node s) {
+        Node pP = p.getProximo();
+        Node pA = p.getAnterior();
+        Node sP = s.getProximo();
+        Node sA = s.getAnterior();
+
+        p.setProximo(sP);
+        p.setAnterior(s);
+        s.setProximo(p);
+        s.setAnterior(pA);
+
+        arrumarPessoa(p, s);
+    }
+
+    public void arrumarPessoa (Node p, Node s) {
+        int x, y;
+        x = p.getNome().getX();
+        y = p.getNome().getY();
+        p.getNome().setLocation(s.getNome().getX(), s.getNome().getY());
+        s.getNome().setLocation(x, y);
+        x = p.getIdade().getX();
+        y = p.getIdade().getY();
+        p.getIdade().setLocation(s.getIdade().getX(), s.getIdade().getY());
+        s.getIdade().setLocation(x, y);
+        x = p.getPessoa().getX();
+        y = p.getPessoa().getY();
+        p.getPessoa().setLocation(s.getPessoa().getX(), s.getPessoa().getY());
+        s.getPessoa().setLocation(x, y);
     }
 
     public boolean isEmpty(){
