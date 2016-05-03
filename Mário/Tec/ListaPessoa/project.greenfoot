@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Tue Apr 26 19:01:52 BRT 2016
+#Tue May 03 09:11:28 BRT 2016
 class.Lista.superclass=
 editor.fx.0.height=700
 target2.width=80
@@ -66,7 +66,7 @@ class.OrdenarAsc.image=ladybug_02.png
 target6.type=ClassTarget
 target2.height=50
 target2.typeParameters=
-editor.swing.0.height=700
+editor.swing.0.height=741
 dependency11.to=Pessoa
 target9.typeParameters=
 dependency11.from=Node
@@ -92,7 +92,7 @@ target7.typeParameters=
 target2.name=Buscar
 dependency9.from=Add
 readme.name=@README
-editor.swing.0.width=700
+editor.swing.0.width=890
 target6.naviview.expanded=true
 target6.name=Label
 target9.height=50
