@@ -185,27 +185,28 @@ public class Lista
         // }
         // rolezero = rolezero.getProximo();
         // }
-
-        for(int i = 1; i <= getSize(); i++) {
-            for(int j = i; j <= getSize(); j++){
-                System.out.println(Integer.parseInt(getNode(i).getIdade().getValue())+":"+Integer.parseInt(getNode(j).getIdade().getValue()));
-                System.out.println(getSize()+" i:"+i+" j:"+j);
-                System.out.println("inicio: "+inicio.getNome().getValue());
+        boolean troca = true;
+        int j = 0;
+        while(troca){
+            troca = false;
+            j++;
+            for(int i = 1; i < getSize() - j; i++){
                 if(Integer.parseInt(getNode(i).getIdade().getValue()) > Integer.parseInt(getNode(j).getIdade().getValue())){
                     trocar(getNode(i), getNode(j));
                 }
-
-                isInicio();
             }
         }
-    }
 
-    public void isInicio() {
-        for(int i = 1; i <= getSize(); i++){
-            if(getNode(i).getAnterior() == null) {
-                this.inicio = getNode(i);
-            }
-        }
+        // for(int i = 1; i <= getSize(); i++) {
+            // for(int j = i; j <= getSize(); j++){
+                // System.out.println(Integer.parseInt(getNode(i).getIdade().getValue())+":"+Integer.parseInt(getNode(j).getIdade().getValue()));
+                // System.out.println(getSize()+" i:"+i+" j:"+j);
+                // System.out.println("inicio: "+inicio.getNome().getValue());
+                // if(Integer.parseInt(getNode(i).getIdade().getValue()) > Integer.parseInt(getNode(j).getIdade().getValue())){
+                    // trocar(getNode(i), getNode(j));
+                // }
+            // }
+        // }
     }
 
     public void trocar(Node p, Node s) {
