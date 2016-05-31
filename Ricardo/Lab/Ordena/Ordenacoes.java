@@ -90,8 +90,7 @@ public class Ordenacoes{
         System.out.println("");
     }
 
-    public void trocar(int[] a, int i, int j)
-    {
+    public void trocar(int[] a, int i, int j){
         int aux = a[i];
         a[i] = a[j];
         a[j] = aux;
