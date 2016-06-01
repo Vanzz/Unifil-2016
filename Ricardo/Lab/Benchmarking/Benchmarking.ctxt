@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment0.text=\n\ In\u00EDcio\ do\ programa,\ define\ os\ par\u00E2metros\ de\ benchmarking,\ executa\ e\ exibe\ os\ resultados\ em\n\ forma\ de\ gr\u00E1fico.\n\ \n\ \n
+comment1.params=nMin\ nMax\ passo\ repeticoes
+comment1.target=TabelaTempos\ tomaTemposOrdenacoes(int,\ int,\ int,\ int)
+comment1.text=\n\ Realiza\ o\ benchmarking\ de\ diversas\ implementa\u00E7\u00F5es\ de\ ordenacao\ em\ arranjos\ e\ anota\ os\ resultados\n\ em\ uma\ tabela\ de\ tempos.\n\ \n\ @param\n
+numComments=2

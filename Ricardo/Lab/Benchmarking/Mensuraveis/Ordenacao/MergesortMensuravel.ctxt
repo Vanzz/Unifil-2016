@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=A\ B
+comment0.target=int[]\ mergeArranjos(int[],\ int[])
+comment0.text=\ \n\ Ordena\ e\ intercala\ dois\ arranjos\ de\ n\u00FAmeros\ inteiros,\ usando\ la\u00E7os\ de\ repeti\u00E7\u00E3o\ para\ intercalar\ e\ ordenar\ ao\ mesmo\ tempo.\n\n@param\ int[]\ A\ -\ Arranjo\ de\ n\u00FAmeros\ inteiros\n@param\ int[]\ B\ -\ Arranjo\ de\ n\u00FAmeros\ inteiros\n\n@return\ int[]\ sorted\ -\ Arranjo\ resultante\ da\ interla\u00E7\u00E3o\ ordenada\ dos\ arranjos\ A\ e\ B.\n
+comment1.params=arranjo\ p\ q\ r
+comment1.target=void\ merge(int[],\ int,\ int,\ int)
+comment1.text=\ Intercala\ e\ ordena\ 2\ sub-arranjos\ em\ sequ\u00EAncia\ j\u00E1\ ordenados\ de\ um\ arranjo.\n\n@param\ int[]\ arranjo\ -\ O\ arranjo\ qual\ est\u00E1\ contido\ os\ trechos\ a\ serem\ intercalados\ e\ ordenados.\n@param\ int\ p\ -\ Posi\u00E7\u00E3o\ inicial\ do\ primeiro\ arranjo.\n@param\ int\ q\ -\ Posi\u00E7\u00E3o\ final\ do\ primeiro\ e\ inicial\ do\ segundo\ arranjo.\n@param\ int\ r\ -\ Posi\u00E7\u00E3o\ final\ do\ segundo\ arranjo\ (exclusive).\ \n
+comment2.params=arranjo\ p\ r
+comment2.target=void\ mergesort(int[],\ int,\ int)
+comment2.text=\n\ Ordena\ um\ trecho\ de\ um\ arranjo\ utilizando\ o\ m\u00E9todo\ de\ intercala\u00E7\u00E3o,\ usando\ a\ recursividade\ como\ meio\ de\ obter\ os\ sub-arranjos\ j\u00E1\ ordenados.\n\ \n@param\ int[]\ arranjo\ -\ Arranjo\ a\ ser\ ordenado\n@param\ int\ p\ -\ inicio\ do\ trecho\n@param\ int\ r\ -\ fim\ do\ trecho\ (\ exclusive)\n
+comment3.params=arranjo
+comment3.target=void\ ordenar(int[])
+numComments=4

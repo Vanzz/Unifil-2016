@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=monteComprado
+comment0.target=int[]\ ordenarCom2Arranjos(int[])
+comment1.params=a\ i\ j
+comment1.target=void\ trocar(int[],\ int,\ int)
+comment2.params=arranjo
+comment2.target=void\ ordenar(int[])
+numComments=3
