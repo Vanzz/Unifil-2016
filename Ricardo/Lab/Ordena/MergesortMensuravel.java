@@ -52,7 +52,6 @@ public class MergesortMensuravel{
                     }
                 }
             }
-
         }
         return sorted;
     }
@@ -70,7 +69,7 @@ public class MergesortMensuravel{
         int index = p;
         int ai = 0;
         int bi = 0;
-        while(index<r){
+        while(index < r){
             if(ai < a.length && bi < b.length)
             {
                 if(a[ai] <= b[bi])
@@ -110,7 +109,7 @@ public class MergesortMensuravel{
      *@param int r - fim do trecho ( exclusive)
      */
     public void mergesort(int[] arranjo, int p, int r){
-        if(p<r-1){
+        if(p < r-1){
             int meio = (p + r)/2;
             mergesort(arranjo, p, meio);
             mergesort(arranjo, meio, r);
